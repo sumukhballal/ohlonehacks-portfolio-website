@@ -25,8 +25,8 @@ function upload(event)
         body: fd
     })
 
-    fetch(req).then((reponse) => {
-        document.getElementById('output').textContent="File Uploaded"
+    fetch(req).then((response) => {
+        console.log(response.json)
     }).catch ( (err) => {
         console.log("Error")
     })

@@ -3,16 +3,22 @@ const spawn= require('child_process')
 var formidable=require('formidable')
 var multer = require('multer');
 var http=require('http')
+const bodyParser = require('body-parser');
+const fs=require('fs')
+const PDFParser=require('pdf2json')
+const files=fs.readdirSync("../Files")
+const parser=require('./parser.js')
 
 const app=express()
 const port=9000
-
+var filenameNew=""
 var storage=multer.diskStorage(
     {
         destination: '../Files/',
         filename: function(req,res,cb) {
-            const uniqueSuffix= Date.now() + '-' + Math.round(Math.random() * 1E9)
-            cb(null, res.fieldname+"_"+uniqueSuffix+".pdf")
+            const uniqueSuffix= Date.now() + '-' + Math.round(Math.random() * 1000)
+            filenameNew=res.fieldname+"_"+uniqueSuffix+".pdf"
+            cb(null, filenameNew)
         }
     }
 )
@@ -26,8 +32,11 @@ app.post('/fileupload',(req,res,next) =>
         {
             return res.send("Bad Luck! Doesnt work")
         }
+        parser(filenameNew)
+        console.log("File uploaded")
         return res.send("File uploaded successfully")
     })
+
 })
 
 app.get('/',(req,res) => {
