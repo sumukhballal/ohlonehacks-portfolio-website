@@ -309,6 +309,7 @@ a.text-button-icon:hover i {
   letter-spacing: 1px;
   margin-top: 20px;
   margin-bottom: 0px;
+  text-align: center;
 }
 
 
@@ -956,6 +957,8 @@ about
 ---------------------------------------------
 */
 
+
+
 #about {
   padding: 120px 0px 0px 0px;
   position: relative;
@@ -973,7 +976,10 @@ about
 
 #about .section-heading h6 {
   color: #5fb759;
+  font-size: 50px;
+  text-align: center;
 }
+
 
 #about .service-item {
   margin-top: 30px;
@@ -1001,12 +1007,15 @@ about
 
 #about .right-text-content {
   margin-top: 40px;
+  text-align: center;
 }
 
 #about .right-text-content p {
   font-size: 16px;
+  font-weight: 600;
   line-height: 27px;
   color: #777;
+  text-align: center;
 }
 
 
