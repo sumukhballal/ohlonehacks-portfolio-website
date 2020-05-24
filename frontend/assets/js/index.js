@@ -1,4 +1,4 @@
-const url="http://localhost:9000/fileupload"
+const url="http://localhost:5000/fileupload"
 
 document.addEventListener('DOMContentLoaded',init)
 
