@@ -1,6 +1,7 @@
 const fs=require('fs')
 const PDFParser=require('pdf2json')
 const files=fs.readdirSync("../Files")
+var ncp = require('ncp').ncp;
 
 var filesJson=[{
     "Name":"",
@@ -26,8 +27,21 @@ pdfParser.on("pdfParser_dataReady",(pdfData) => {
 
         console.log("Created JSON FIle")
     })
+
+   // createHtmlFile(jsonFilePath)
 })
 }
+
+/*function createHtmlFile(jsonFilePath)
+{
+    ncp(source, destination, function (err) {
+        if (err) {
+          return console.error(err);
+        }
+        console.log('done!');
+       });
+}*/
+
 
 var setCount=0
 
@@ -38,6 +52,8 @@ function rawtoJson(raw)
     filesJson[0].Location=rawSplit[1].trim()
     filesJson[0].LinkedInUrl=rawSplit[2].trim()
     filesJson[0].Email=rawSplit[3].trim()
+
+    console.log(filesJson[0])
     filesJson[0].Summary=getSummary(rawSplit,5)
     filesJson[0].Experience=getExperiences(rawSplit,setCount+1)
     filesJson[0].Education=getEducation(rawSplit,setCount+1)
@@ -97,8 +113,6 @@ function getExperiences(rawC,count)
     setCount=count
     return result;
 }
-
-
 
 
 module.exports = parser

@@ -33,7 +33,7 @@ app.post('/fileupload',(req,res,next) =>
             return res.send("Bad Luck! Doesnt work")
         }
         parser(filenameNew)
-        console.log("File uploaded")
+        console.log("File uploaded.")
         return res.send("File uploaded successfully")
     })
 
